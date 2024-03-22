@@ -23,6 +23,7 @@
 		FE277C4C2BACBC93007246A9 /* PersonRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE277C4B2BACBC93007246A9 /* PersonRemoteDataSource.swift */; };
 		FE277C4F2BACCA4F007246A9 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE277C4E2BACCA4F007246A9 /* MasterViewModel.swift */; };
 		FE277C532BADAEAC007246A9 /* MasterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE277C522BADAEAC007246A9 /* MasterTableCell.swift */; };
+		FEE8A0632BADEFDA0088FA6A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FEE8A0622BADEFDA0088FA6A /* SkeletonView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE8A0632BADEFDA0088FA6A /* SkeletonView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +238,9 @@
 			dependencies = (
 			);
 			name = "Test Task";
+			packageProductDependencies = (
+				FEE8A0622BADEFDA0088FA6A /* SkeletonView */,
+			);
 			productName = "Test Task";
 			productReference = FE277C062BAC705B007246A9 /* Test Task.app */;
 			productType = "com.apple.product-type.application";
@@ -308,6 +313,9 @@
 				Base,
 			);
 			mainGroup = FE277BFD2BAC705B007246A9;
+			packageReferences = (
+				FEE8A0612BADEFDA0088FA6A /* XCRemoteSwiftPackageReference "SkeletonView" */,
+			);
 			productRefGroup = FE277C072BAC705B007246A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -707,6 +715,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FEE8A0612BADEFDA0088FA6A /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.30.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FEE8A0622BADEFDA0088FA6A /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEE8A0612BADEFDA0088FA6A /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FE277C122BAC705B007246A9 /* Test_Task.xcdatamodeld */ = {

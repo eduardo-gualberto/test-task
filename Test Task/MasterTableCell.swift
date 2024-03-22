@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class MasterTableCell: UITableViewCell {
+    static let identifier = "masterCell"
     
     @IBOutlet weak var dimmedLabel: UILabel!
     
@@ -17,7 +18,6 @@ class MasterTableCell: UITableViewCell {
     @IBOutlet weak var wonDealsLabel: UILabel!
     
     @IBOutlet weak var lostDealsLabel: UILabel!
-
     
     func setPersonName(_ name: String) {
         let prefix = "[Sample] "
