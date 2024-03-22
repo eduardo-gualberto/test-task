@@ -24,6 +24,7 @@
 		FE277C4F2BACCA4F007246A9 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE277C4E2BACCA4F007246A9 /* MasterViewModel.swift */; };
 		FE277C532BADAEAC007246A9 /* MasterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE277C522BADAEAC007246A9 /* MasterTableCell.swift */; };
 		FEE8A0632BADEFDA0088FA6A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FEE8A0622BADEFDA0088FA6A /* SkeletonView */; };
+		FEE8A0662BAE08BF0088FA6A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		FE277C4B2BACBC93007246A9 /* PersonRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRemoteDataSource.swift; sourceTree = "<group>"; };
 		FE277C4E2BACCA4F007246A9 /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewModel.swift; sourceTree = "<group>"; };
 		FE277C522BADAEAC007246A9 /* MasterTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterTableCell.swift; sourceTree = "<group>"; };
+		FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 		FE277C502BADACDE007246A9 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				FEE8A0642BAE08A10088FA6A /* Detail */,
 				FE277C512BADADAE007246A9 /* Master */,
 			);
 			name = ui;
@@ -220,6 +223,14 @@
 				FE277C522BADAEAC007246A9 /* MasterTableCell.swift */,
 			);
 			name = Master;
+			sourceTree = "<group>";
+		};
+		FEE8A0642BAE08A10088FA6A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE8A0662BAE08BF0088FA6A /* DetailViewController.swift in Sources */,
 				FE277C482BAC9A42007246A9 /* PersonRepository.swift in Sources */,
 				FE277C4F2BACCA4F007246A9 /* MasterViewModel.swift in Sources */,
 				FE277C142BAC705B007246A9 /* Test_Task.xcdatamodeld in Sources */,

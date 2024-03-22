@@ -144,6 +144,7 @@
                                             <outlet property="lostDealsLabel" destination="5po-NV-ncP" id="l46-DF-sDN"/>
                                             <outlet property="personNameLabel" destination="ZH3-I5-8GI" id="7Ia-Eo-llN"/>
                                             <outlet property="wonDealsLabel" destination="cra-aR-E8w" id="G6U-mq-xgo"/>
+                                            <segue destination="imW-Zn-0wj" kind="presentation" id="UtO-MO-LaE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -173,13 +174,38 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6Um-yl-v7a" secondAttribute="bottom" id="wN3-UJ-yBs"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="OvW-GI-weo"/>
                     <connections>
                         <outlet property="tableView" destination="6Um-yl-v7a" id="QCE-Fr-bJh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="59" y="44"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="dAY-nl-PAI">
+            <objects>
+                <viewController id="imW-Zn-0wj" customClass="DetailViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X0m-l4-Xuf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teste amor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOY-gb-Z1R">
+                                <rect key="frame" x="154" y="411" width="85" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="etI-4J-7nz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P32-2j-K3a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="44"/>
         </scene>
     </scenes>
     <resources>

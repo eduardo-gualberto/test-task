@@ -14,9 +14,10 @@ class MasterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewModel.vc = self
         tableView.dataSource = viewModel
-        
+                
         viewModel.fetchPersonsList()
     }
     
@@ -25,5 +26,11 @@ class MasterViewController: UIViewController {
         
         tableView.isSkeletonable = true
         tableView.showAnimatedGradientSkeleton()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailsVC = segue.destination as? DetailViewController else { return }
+        guard let selectedRow = tableView.indexPathForSelectedRow else { return }
+        detailsVC.person = viewModel.persons[selectedRow.row]
     }
 }
