@@ -26,6 +26,9 @@
 		FEE7E7062BAF865000ED193B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E7052BAF864F00ED193B /* DetailViewModel.swift */; };
 		FEE7E7082BAF968800ED193B /* DetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E7072BAF968800ED193B /* DetailTableCell.swift */; };
 		FEE7E70B2BB056D300ED193B /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E70A2BB056D300ED193B /* CopyableLabel.swift */; };
+		FEE7E70E2BB0769C00ED193B /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E70D2BB0769C00ED193B /* CoordinatorProtocol.swift */; };
+		FEE7E7102BB0772200ED193B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E70F2BB0772200ED193B /* AppCoordinator.swift */; };
+		FEE7E7122BB0836400ED193B /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E7112BB0836400ED193B /* Storyboarded.swift */; };
 		FEE8A0632BADEFDA0088FA6A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FEE8A0622BADEFDA0088FA6A /* SkeletonView */; };
 		FEE8A0662BAE08BF0088FA6A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +74,9 @@
 		FEE7E7052BAF864F00ED193B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		FEE7E7072BAF968800ED193B /* DetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableCell.swift; sourceTree = "<group>"; };
 		FEE7E70A2BB056D300ED193B /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
+		FEE7E70D2BB0769C00ED193B /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		FEE7E70F2BB0772200ED193B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FEE7E7112BB0836400ED193B /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,9 +221,9 @@
 		FE277C502BADACDE007246A9 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				FEE7E70C2BB0760400ED193B /* scenes */,
 				FEE7E7092BB0568200ED193B /* shared */,
-				FEE8A0642BAE08A10088FA6A /* Detail */,
-				FE277C512BADADAE007246A9 /* Master */,
+				FEE7E70F2BB0772200ED193B /* AppCoordinator.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -236,8 +242,19 @@
 			isa = PBXGroup;
 			children = (
 				FEE7E70A2BB056D300ED193B /* CopyableLabel.swift */,
+				FEE7E70D2BB0769C00ED193B /* CoordinatorProtocol.swift */,
+				FEE7E7112BB0836400ED193B /* Storyboarded.swift */,
 			);
 			name = shared;
+			sourceTree = "<group>";
+		};
+		FEE7E70C2BB0760400ED193B /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FEE8A0642BAE08A10088FA6A /* Detail */,
+				FE277C512BADADAE007246A9 /* Master */,
+			);
+			name = scenes;
 			sourceTree = "<group>";
 		};
 		FEE8A0642BAE08A10088FA6A /* Detail */ = {
@@ -389,10 +406,13 @@
 			files = (
 				FEE8A0662BAE08BF0088FA6A /* DetailViewController.swift in Sources */,
 				FE277C482BAC9A42007246A9 /* PersonRepository.swift in Sources */,
+				FEE7E70E2BB0769C00ED193B /* CoordinatorProtocol.swift in Sources */,
 				FEE7E7082BAF968800ED193B /* DetailTableCell.swift in Sources */,
+				FEE7E7102BB0772200ED193B /* AppCoordinator.swift in Sources */,
 				FE277C4F2BACCA4F007246A9 /* MasterViewModel.swift in Sources */,
 				FE277C142BAC705B007246A9 /* Test_Task.xcdatamodeld in Sources */,
 				FE277C0E2BAC705B007246A9 /* MasterViewController.swift in Sources */,
+				FEE7E7122BB0836400ED193B /* Storyboarded.swift in Sources */,
 				FE277C452BAC79FD007246A9 /* PersonModel.swift in Sources */,
 				FEE7E70B2BB056D300ED193B /* CopyableLabel.swift in Sources */,
 				FE277C4A2BACBACF007246A9 /* ListAllPersonsUseCase.swift in Sources */,

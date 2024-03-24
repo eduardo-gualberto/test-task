@@ -7,9 +7,8 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-    var person: PersonModel!
-    let viewModel = DetailViewModel()
+class DetailViewController: UIViewController, Storyboarded {
+    var viewModel: DetailViewModel!
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -18,8 +17,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.person = person
-        nameLabel.text = person.name.deletingPrefix("[Sample] ")
+        nameLabel.text = viewModel.person.name.deletingPrefix("[Sample] ")
         setupTableView()
     }
 

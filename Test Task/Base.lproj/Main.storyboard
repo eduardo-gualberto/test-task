@@ -12,7 +12,7 @@
         <!--Master View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MasterViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MasterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MasterViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,7 +90,6 @@
                                         <connections>
                                             <outlet property="dimmedLabel" destination="6NR-5L-wQq" id="5XF-1e-PpT"/>
                                             <outlet property="personNameLabel" destination="ZH3-I5-8GI" id="7Ia-Eo-llN"/>
-                                            <segue destination="imW-Zn-0wj" kind="presentation" id="UtO-MO-LaE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -132,19 +131,19 @@
         <!--Detail View Controller-->
         <scene sceneID="dAY-nl-PAI">
             <objects>
-                <viewController id="imW-Zn-0wj" customClass="DetailViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="imW-Zn-0wj" customClass="DetailViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X0m-l4-Xuf">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benjamin Leon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIe-Bb-Gi3">
-                                <rect key="frame" x="20" y="40" width="353" height="36"/>
+                                <rect key="frame" x="20" y="99" width="353" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vaG-jl-vH6">
-                                <rect key="frame" x="0.0" y="86" width="393" height="756"/>
+                                <rect key="frame" x="0.0" y="145" width="393" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <edgeInsets key="layoutMargins" top="20" left="8" bottom="8" right="8"/>
                                 <prototypes>

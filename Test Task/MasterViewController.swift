@@ -8,9 +8,10 @@
 import UIKit
 import SkeletonView
 
-class MasterViewController: UIViewController {
+class MasterViewController: UIViewController, Storyboarded {
+    static let identifier = "masterViewController"
     var persons: [PersonModel] = []
-    let viewModel = MasterViewModel()
+    var viewModel: MasterViewModel!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,6 +20,7 @@ class MasterViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
                 
         viewModel.fetchPersonsList {
             persons in
@@ -41,14 +43,19 @@ class MasterViewController: UIViewController {
     }
 }
 
-//MARK: Navigation
-extension MasterViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailsVC = segue.destination as? DetailViewController else { return }
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        detailsVC.person = persons[indexPath.row]
-        self.tableView.deselectRow(at: indexPath, animated: true)
+//MARK: UITableViewDelegate
+extension MasterViewController: UITableViewDelegate {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let detailsVC = segue.destination as? DetailViewController else { return }
+//        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+//        detailsVC.person = persons[indexPath.row]
+//        self.tableView.deselectRow(at: indexPath, animated: true)
+//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.openDetail(for: persons[indexPath.row])
     }
+    
 }
 
 //MARK: UITableViewDataSource
