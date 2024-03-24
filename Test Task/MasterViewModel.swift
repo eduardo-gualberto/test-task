@@ -8,9 +8,14 @@
 import UIKit
 import SkeletonView
 
-class MasterViewModel {
-    var coordinator: AppCoordinator!
-    weak var vc: MasterViewController!
+protocol MasterViewModelProtocol {
+    func fetchPersonsList(completion: @escaping ([PersonModel]) -> Void)
+    func openDetail(for person: PersonModel)
+}
+
+class MasterViewModel: MasterViewModelProtocol {
+    var coordinator: AppCoordinatorProtocol!
+    weak var vc: MasterViewControllerProtocol?
     
     let listAllPersonsUseCase = ListAllPersonsUseCase()
     
@@ -26,6 +31,7 @@ class MasterViewModel {
     }
     
     func openDetail(for person: PersonModel){
+        guard let vc = self.vc else { return }
         coordinator.goToDetail(person: person, from: vc)
     }
 }

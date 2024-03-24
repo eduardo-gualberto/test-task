@@ -7,14 +7,22 @@
 
 import Foundation
 
+protocol DetailViewModelProtocol {
+    var person: PersonModel! { get }
+    func getTableViewSections() -> [DetailTableViewSection]
+    func getTableViewSectionsCount() -> Int
+    func getTableViewSection(for index: Int) -> DetailTableViewSection
+}
+
 struct DetailTableViewSection {
     let name: String
     let items: [[String:String]]
     let empty: Bool
 }
 
-final class DetailViewModel {
+final class DetailViewModel: DetailViewModelProtocol {
     var person: PersonModel!
+    var coordinator: AppCoordinatorProtocol!
     lazy private var sections: [DetailTableViewSection] = {
         let contactSection = createContactSection()
         let dealsSection = createDealsSection()

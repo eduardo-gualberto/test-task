@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController, Storyboarded {
-    var viewModel: DetailViewModel!
+    var viewModel: DetailViewModelProtocol!
     
     @IBOutlet weak var nameLabel: UILabel!
     

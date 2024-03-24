@@ -8,10 +8,14 @@
 import UIKit
 import SkeletonView
 
-class MasterViewController: UIViewController, Storyboarded {
+protocol MasterViewControllerProtocol where Self: UIViewController {
+}
+
+class MasterViewController: UIViewController, MasterViewControllerProtocol, Storyboarded {
     static let identifier = "masterViewController"
+    var viewModel: MasterViewModelProtocol!
+    
     var persons: [PersonModel] = []
-    var viewModel: MasterViewModel!
     
     @IBOutlet weak var tableView: UITableView!
     

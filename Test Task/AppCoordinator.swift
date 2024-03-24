@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-final class AppCoordinator: CoordinatorProtocol {
+protocol AppCoordinatorProtocol: CoordinatorProtocol {
+    func goToDetail(person: PersonModel, from vc: UIViewController)
+}
+
+final class AppCoordinator: AppCoordinatorProtocol {
     // MARK: - Properties
     private let navController: UINavigationController
     private let window: UIWindow
@@ -42,6 +46,7 @@ final class AppCoordinator: CoordinatorProtocol {
     func goToDetail(person: PersonModel, from vc: UIViewController) {
         let viewModel = DetailViewModel()
         viewModel.person = person
+        viewModel.coordinator = self
         
         let detailVC = DetailViewController.instantiate()
         detailVC.modalPresentationStyle = .pageSheet
