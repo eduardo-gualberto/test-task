@@ -62,9 +62,7 @@ extension MasterViewController: SkeletonTableViewDataSource {
         let person = persons[indexPath.row]
         
         cell.setPersonName(person.name)
-        cell.setWonDeals(person.wonDealsCount)
-        cell.setLostDeals(person.lostDealsCount)
-        cell.setDimmed(person.orgName ?? person.primaryEmail)
+        cell.setDimmed(person.orgName ?? person.ownerName)
 
         return cell
     }

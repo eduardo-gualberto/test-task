@@ -47,13 +47,19 @@ struct PersonRemoteDataSource {
                 if let data = data {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                    
                     let decoded = try decoder.decode(RawPersonsResponse.self, from: data)
                     
                     completion(.success(decoded.data))
                 } else {
                     completion(.failure(.noDataFetched))
                 }
-            } catch {
+            } catch(let e) {
+                debugPrint(e)
                 completion(.failure(.parsingError))
             }
         }
