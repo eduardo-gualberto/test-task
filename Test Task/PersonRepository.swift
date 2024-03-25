@@ -21,14 +21,18 @@ struct PersonRepository {
             debugPrint("Retrieved data from a remote data source")
             return .success(remotePersons)
         case .failure(_):
-            let localResult = localDataSource.fetchAll()
-            switch localResult {
-            case .success(let localPersons):
-                debugPrint("Retrieved data from the local data source")
-                return .success(localPersons)
-            case .failure(let error):
-                return .failure(error)
-            }
+            return fallbackToLocalDataSource()
+        }
+    }
+    
+    private func fallbackToLocalDataSource() -> PersonsResult {
+        let localResult = localDataSource.fetchAll()
+        switch localResult {
+        case .success(let localPersons):
+            debugPrint("Retrieved data from the local data source")
+            return .success(localPersons)
+        case .failure(let error):
+            return .failure(error)
         }
     }
 }
