@@ -23,9 +23,11 @@
 		FE277C4C2BACBC93007246A9 /* PersonRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE277C4B2BACBC93007246A9 /* PersonRemoteDataSource.swift */; };
 		FE277C4F2BACCA4F007246A9 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE277C4E2BACCA4F007246A9 /* MasterViewModel.swift */; };
 		FE277C532BADAEAC007246A9 /* MasterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE277C522BADAEAC007246A9 /* MasterTableCell.swift */; };
+		FE618DEC2BB1F6EC00A81435 /* PersonLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE618DEB2BB1F6EC00A81435 /* PersonLocalDataSource.swift */; };
 		FE7424752BB1AA3700D94CBB /* UITableView+EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7424742BB1AA3700D94CBB /* UITableView+EmptyView.swift */; };
 		FE7424772BB1B11A00D94CBB /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE7424762BB1B11A00D94CBB /* EmptyView.xib */; };
 		FE74247A2BB1B1E000D94CBB /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7424792BB1B1E000D94CBB /* EmptyView.swift */; };
+		FE74247C2BB1BC5600D94CBB /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE74247B2BB1BC5600D94CBB /* DatabaseController.swift */; };
 		FEE7E7062BAF865000ED193B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E7052BAF864F00ED193B /* DetailViewModel.swift */; };
 		FEE7E7082BAF968800ED193B /* DetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E7072BAF968800ED193B /* DetailTableCell.swift */; };
 		FEE7E70B2BB056D300ED193B /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E70A2BB056D300ED193B /* CopyableLabel.swift */; };
@@ -74,9 +76,11 @@
 		FE277C4B2BACBC93007246A9 /* PersonRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRemoteDataSource.swift; sourceTree = "<group>"; };
 		FE277C4E2BACCA4F007246A9 /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewModel.swift; sourceTree = "<group>"; };
 		FE277C522BADAEAC007246A9 /* MasterTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterTableCell.swift; sourceTree = "<group>"; };
+		FE618DEB2BB1F6EC00A81435 /* PersonLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonLocalDataSource.swift; sourceTree = "<group>"; };
 		FE7424742BB1AA3700D94CBB /* UITableView+EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+EmptyView.swift"; sourceTree = "<group>"; };
 		FE7424762BB1B11A00D94CBB /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		FE7424792BB1B1E000D94CBB /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		FE74247B2BB1BC5600D94CBB /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		FEE7E7052BAF864F00ED193B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		FEE7E7072BAF968800ED193B /* DetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableCell.swift; sourceTree = "<group>"; };
 		FEE7E70A2BB056D300ED193B /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 		FE277C432BAC7961007246A9 /* application */ = {
 			isa = PBXGroup;
 			children = (
+				FE74247B2BB1BC5600D94CBB /* DatabaseController.swift */,
 			);
 			name = application;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				FE277C4B2BACBC93007246A9 /* PersonRemoteDataSource.swift */,
+				FE618DEB2BB1F6EC00A81435 /* PersonLocalDataSource.swift */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE74247C2BB1BC5600D94CBB /* DatabaseController.swift in Sources */,
 				FEE8A0662BAE08BF0088FA6A /* DetailViewController.swift in Sources */,
 				FE277C482BAC9A42007246A9 /* PersonRepository.swift in Sources */,
 				FEE7E70E2BB0769C00ED193B /* CoordinatorProtocol.swift in Sources */,
@@ -437,6 +444,7 @@
 				FEE7E70B2BB056D300ED193B /* CopyableLabel.swift in Sources */,
 				FE277C4A2BACBACF007246A9 /* ListAllPersonsUseCase.swift in Sources */,
 				FEE7E7062BAF865000ED193B /* DetailViewModel.swift in Sources */,
+				FE618DEC2BB1F6EC00A81435 /* PersonLocalDataSource.swift in Sources */,
 				FE277C532BADAEAC007246A9 /* MasterTableCell.swift in Sources */,
 				FE277C4C2BACBC93007246A9 /* PersonRemoteDataSource.swift in Sources */,
 				FE277C0A2BAC705B007246A9 /* AppDelegate.swift in Sources */,

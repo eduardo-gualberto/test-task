@@ -7,11 +7,15 @@
 
 import UIKit
 import SkeletonView
+import CoreData
 
 protocol MasterViewControllerProtocol where Self: UIViewController {
+    func presentError(error: PersonError)
+    func updatePersonsData(with data: [PersonModel])
 }
 
 class MasterViewController: UIViewController, MasterViewControllerProtocol, Storyboarded {
+    
     static let identifier = "masterViewController"
     var viewModel: MasterViewModelProtocol!
     
@@ -27,18 +31,9 @@ class MasterViewController: UIViewController, MasterViewControllerProtocol, Stor
         tableView.dataSource = self
         tableView.delegate = self
                 
-        viewModel.fetchPersonsList {
-            persons in
-            self.allowEmptyView = true
-            self.persons = persons
-//            self.persons = []
+        Task { @MainActor in
             
-            DispatchQueue.main.async {
-                self.tableView.stopSkeletonAnimation()
-                self.tableView.hideSkeleton()
-                
-                self.tableView.reloadData()
-            }
+            await viewModel.fetchPersonsList()
         }
     }
     
@@ -47,6 +42,19 @@ class MasterViewController: UIViewController, MasterViewControllerProtocol, Stor
         
         tableView.isSkeletonable = true
         tableView.showAnimatedGradientSkeleton()
+    }
+
+    func presentError(error: PersonError) {
+        print(error)
+    }
+    
+    func updatePersonsData(with data: [PersonModel]) {
+        self.allowEmptyView = true
+        self.persons = data
+        self.tableView.stopSkeletonAnimation()
+        self.tableView.hideSkeleton()
+        
+        self.tableView.reloadData()
     }
 }
 

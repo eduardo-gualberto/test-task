@@ -6,13 +6,7 @@
 //
 
 import Foundation
-
-enum PersonError: Error {
-    case unexpected(description: String)
-    case server(code: Int)
-    case parsingError
-    case noDataFetched
-}
+import CoreData
 
 struct RawPersonsResponse: Decodable {
     let success: Bool
@@ -20,49 +14,48 @@ struct RawPersonsResponse: Decodable {
 }
 
 struct PersonRemoteDataSource {
-    func fetchAll(completion: @escaping (Result<[PersonModel], PersonError>) -> Void) {
+    func fetchAll() async -> Result<[PersonModel], PersonError> {
         var components = URLComponents(string: "https://api.pipedrive.com/v1/persons/")
         components?.queryItems = [
             URLQueryItem(name: "api_token", value: "52bfcd9a52ba512c2a71b4fec8fc2969e222a990")
         ]
         guard let components = components, let url = components.url else {
-            return completion(.failure(.unexpected(description: "Couldn't find server")))
+            return .failure(.unexpected(description: "Couldn't find server"))
         }
-        
-        
-        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil else {
-                return completion(.failure(.unexpected(description: "Error creating dataTask")))
-            }
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
             
-            guard let response = response as? HTTPURLResponse else {
-                return completion(.failure(.unexpected(description: "No response object")))
-            }
-            
-            if (400 ... 599).contains(response.statusCode) {
-                return completion(.failure(.server(code: response.statusCode)))
-            }
-            
-            do {
-                if let data = data {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                    
-                    let decoded = try decoder.decode(RawPersonsResponse.self, from: data)
-                    
-                    completion(.success(decoded.data))
-                } else {
-                    completion(.failure(.noDataFetched))
+            if let response = response as? HTTPURLResponse {
+                if (400 ... 599).contains(response.statusCode) {
+                    return .failure(.server(code: response.statusCode))
                 }
-            } catch(let e) {
-                debugPrint(e)
-                completion(.failure(.parsingError))
             }
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            
+            let decoded = try decoder.decode(RawPersonsResponse.self, from: data)
+            
+            Task(priority: .background) {
+                // saves data loaded to the device
+                self.saveLocally(persons: decoded.data)
+            }
+            
+            return .success(decoded.data)
+            
+        } catch(let e) {
+            return .failure(.unexpected(description: e.localizedDescription))
         }
-        dataTask.resume()
+    }
+    
+    private func saveLocally(persons: [PersonModel]) {
+        for person in persons {
+            let _ = person.toEntity()
+        }
+        DatabaseController.saveContext()
     }
 }

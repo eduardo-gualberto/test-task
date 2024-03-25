@@ -9,7 +9,7 @@ import UIKit
 import SkeletonView
 
 protocol MasterViewModelProtocol {
-    func fetchPersonsList(completion: @escaping ([PersonModel]) -> Void)
+    func fetchPersonsList() async -> Void
     func openDetail(for person: PersonModel)
 }
 
@@ -19,14 +19,15 @@ class MasterViewModel: MasterViewModelProtocol {
     
     let listAllPersonsUseCase = ListAllPersonsUseCase()
     
-    func fetchPersonsList(completion: @escaping ([PersonModel]) -> Void) {
-        listAllPersonsUseCase.use { result in
-            switch result {
-            case .success(let persons):
-                completion(persons)
-            case .failure(let error):
-                debugPrint(error)
-            }
+    @MainActor
+    func fetchPersonsList() async {
+        let result = await listAllPersonsUseCase.use()
+        
+        switch result {
+        case .success(let persons):
+            vc?.updatePersonsData(with: persons)
+        case .failure(let error):
+            vc?.presentError(error: error)
         }
     }
     

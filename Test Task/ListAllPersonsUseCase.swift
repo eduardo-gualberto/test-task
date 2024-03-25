@@ -10,7 +10,7 @@ import Foundation
 struct ListAllPersonsUseCase {
     let personRepository = PersonRepository()
     
-    func use(completion: @escaping (Result<[PersonModel], PersonError>) -> Void) {
-        return personRepository.fetchAll(completion: completion)
+    func use() async -> PersonsResult {
+        return await personRepository.fetchAll()
     }
 }

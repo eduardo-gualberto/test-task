@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PersonEntity" representedClassName=".PersonEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="activeFlag" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="activitiesCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="closedDealsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="doneActivitiesCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastActivityDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lostDealsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="openDealsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="orgName" optional="YES" attributeType="String"/>
+        <attribute name="ownerName" optional="YES" attributeType="String"/>
+        <attribute name="primaryEmail" optional="YES" attributeType="String"/>
+        <attribute name="undoneActivitiesCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wonDealsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="orgId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonOrgEntity" inverseName="person" inverseEntity="PersonOrgEntity"/>
+        <relationship name="ownerId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonOwnerEntity" inverseName="person" inverseEntity="PersonOwnerEntity"/>
+        <relationship name="phone" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PersonPhoneEntity" inverseName="person" inverseEntity="PersonPhoneEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="PersonOrgEntity" representedClassName=".PersonOrgEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="ccEmail" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="ownerName" optional="YES" attributeType="String"/>
+        <attribute name="peopleCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonEntity" inverseName="orgId" inverseEntity="PersonEntity"/>
+    </entity>
+    <entity name="PersonOwnerEntity" representedClassName=".PersonOwnerEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonEntity" inverseName="ownerId" inverseEntity="PersonEntity"/>
+    </entity>
+    <entity name="PersonPhoneEntity" representedClassName=".PersonPhoneEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="label" attributeType="String"/>
+        <attribute name="primary" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="value" attributeType="String"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonEntity" inverseName="phone" inverseEntity="PersonEntity"/>
+    </entity>
 </model>
