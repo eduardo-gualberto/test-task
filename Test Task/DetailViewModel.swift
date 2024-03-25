@@ -23,6 +23,7 @@ struct DetailTableViewSection {
 final class DetailViewModel: DetailViewModelProtocol {
     var person: PersonModel!
     var coordinator: AppCoordinatorProtocol!
+
     lazy private var sections: [DetailTableViewSection] = {
         let contactSection = createContactSection()
         let dealsSection = createDealsSection()

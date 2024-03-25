@@ -16,6 +16,7 @@ class MasterViewController: UIViewController, MasterViewControllerProtocol, Stor
     var viewModel: MasterViewModelProtocol!
     
     var persons: [PersonModel] = []
+    var allowEmptyView = false
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,7 +29,9 @@ class MasterViewController: UIViewController, MasterViewControllerProtocol, Stor
                 
         viewModel.fetchPersonsList {
             persons in
+            self.allowEmptyView = true
             self.persons = persons
+//            self.persons = []
             
             DispatchQueue.main.async {
                 self.tableView.stopSkeletonAnimation()
@@ -49,12 +52,6 @@ class MasterViewController: UIViewController, MasterViewControllerProtocol, Stor
 
 //MARK: UITableViewDelegate
 extension MasterViewController: UITableViewDelegate {
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let detailsVC = segue.destination as? DetailViewController else { return }
-//        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-//        detailsVC.person = persons[indexPath.row]
-//        self.tableView.deselectRow(at: indexPath, animated: true)
-//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         viewModel.openDetail(for: persons[indexPath.row])
@@ -65,6 +62,13 @@ extension MasterViewController: UITableViewDelegate {
 //MARK: UITableViewDataSource
 extension MasterViewController: SkeletonTableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if persons.count == 0 && allowEmptyView {
+            tableView.setEmptyView(title: "No one to show.", message: "Your contacts will be in here")
+        } else {
+            tableView.restore()
+        }
+        
         return persons.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +77,8 @@ extension MasterViewController: SkeletonTableViewDataSource {
         let person = persons[indexPath.row]
         
         cell.setPersonName(person.name)
-        cell.setDimmed(person.orgName ?? person.ownerName)
+        let dimmedField = person.orgName == "Unknown" ? person.ownerName : person.orgName
+        cell.setDimmed(dimmedField)
 
         return cell
     }
