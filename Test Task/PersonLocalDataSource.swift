@@ -19,7 +19,5 @@ struct PersonLocalDataSource {
         } catch(_) {
             return .failure(.localDBFail)
         }
-        
-        
     }
 }

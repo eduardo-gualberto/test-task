@@ -40,6 +40,8 @@
 		FEE7E7122BB0836400ED193B /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E7112BB0836400ED193B /* Storyboarded.swift */; };
 		FEE8A0632BADEFDA0088FA6A /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FEE8A0622BADEFDA0088FA6A /* SkeletonView */; };
 		FEE8A0662BAE08BF0088FA6A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */; };
+		FEF4343C2BB34259005C3729 /* PersonRemoteDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4343B2BB34259005C3729 /* PersonRemoteDataSourceMock.swift */; };
+		FEF4343F2BB34DBB005C3729 /* PersonLocalDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4343E2BB34DBB005C3729 /* PersonLocalDataSourceMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		FEE7E70F2BB0772200ED193B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FEE7E7112BB0836400ED193B /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FEF4343B2BB34259005C3729 /* PersonRemoteDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRemoteDataSourceMock.swift; sourceTree = "<group>"; };
+		FEF4343E2BB34DBB005C3729 /* PersonLocalDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonLocalDataSourceMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 		FE277C222BAC705D007246A9 /* Test TaskTests */ = {
 			isa = PBXGroup;
 			children = (
+				FEF4343D2BB34DA7005C3729 /* mocks */,
 				FE277C232BAC705D007246A9 /* Test_TaskTests.swift */,
 			);
 			path = "Test TaskTests";
@@ -316,6 +321,15 @@
 				FEE7E7072BAF968800ED193B /* DetailTableCell.swift */,
 			);
 			name = Detail;
+			sourceTree = "<group>";
+		};
+		FEF4343D2BB34DA7005C3729 /* mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FEF4343B2BB34259005C3729 /* PersonRemoteDataSourceMock.swift */,
+				FEF4343E2BB34DBB005C3729 /* PersonLocalDataSourceMock.swift */,
+			);
+			path = mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,6 +503,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE277C242BAC705D007246A9 /* Test_TaskTests.swift in Sources */,
+				FEF4343F2BB34DBB005C3729 /* PersonLocalDataSourceMock.swift in Sources */,
+				FEF4343C2BB34259005C3729 /* PersonRemoteDataSourceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
