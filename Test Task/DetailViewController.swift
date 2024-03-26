@@ -16,9 +16,10 @@ class DetailViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         nameLabel.text = viewModel.person.name.deletingPrefix("[Sample] ")
         setupTableView()
+        self.setupAlly()
     }
 
 }
@@ -49,6 +50,8 @@ extension DetailViewController: UITableViewDataSource {
         cell.valueLabel.text = item.values.first
         
         setLabelColorFor(cell)
+        
+        cell.setupAlly()
         
         return cell
     }

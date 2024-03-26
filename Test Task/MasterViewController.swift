@@ -28,11 +28,12 @@ class MasterViewController: UIViewController, MasterViewControllerProtocol, Stor
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupAlly()
+        
         tableView.dataSource = self
         tableView.delegate = self
                 
-        Task { @MainActor in
-            
+        Task { 
             await viewModel.fetchPersonsList()
         }
     }
@@ -87,6 +88,7 @@ extension MasterViewController: SkeletonTableViewDataSource {
         cell.setPersonName(person.name)
         let dimmedField = person.orgName == "Unknown" ? person.ownerName : person.orgName
         cell.setDimmed(dimmedField)
+        cell.setupAlly()
 
         return cell
     }

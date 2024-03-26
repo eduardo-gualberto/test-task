@@ -28,6 +28,10 @@
 		FE7424772BB1B11A00D94CBB /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE7424762BB1B11A00D94CBB /* EmptyView.xib */; };
 		FE74247A2BB1B1E000D94CBB /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7424792BB1B1E000D94CBB /* EmptyView.swift */; };
 		FE74247C2BB1BC5600D94CBB /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE74247B2BB1BC5600D94CBB /* DatabaseController.swift */; };
+		FECA588B2BB2F93D00F8AD23 /* MasterViewController+Ally.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECA588A2BB2F93D00F8AD23 /* MasterViewController+Ally.swift */; };
+		FECA588F2BB2FB8C00F8AD23 /* MasterTableCell+Ally.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECA588E2BB2FB8C00F8AD23 /* MasterTableCell+Ally.swift */; };
+		FECA58922BB2FDE600F8AD23 /* DetailViewController+Ally.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECA58912BB2FDE600F8AD23 /* DetailViewController+Ally.swift */; };
+		FECA58942BB2FF5A00F8AD23 /* DetailTableCell+Ally.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECA58932BB2FF5A00F8AD23 /* DetailTableCell+Ally.swift */; };
 		FEE7E7062BAF865000ED193B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E7052BAF864F00ED193B /* DetailViewModel.swift */; };
 		FEE7E7082BAF968800ED193B /* DetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E7072BAF968800ED193B /* DetailTableCell.swift */; };
 		FEE7E70B2BB056D300ED193B /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7E70A2BB056D300ED193B /* CopyableLabel.swift */; };
@@ -81,6 +85,10 @@
 		FE7424762BB1B11A00D94CBB /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		FE7424792BB1B1E000D94CBB /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		FE74247B2BB1BC5600D94CBB /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		FECA588A2BB2F93D00F8AD23 /* MasterViewController+Ally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterViewController+Ally.swift"; sourceTree = "<group>"; };
+		FECA588E2BB2FB8C00F8AD23 /* MasterTableCell+Ally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterTableCell+Ally.swift"; sourceTree = "<group>"; };
+		FECA58912BB2FDE600F8AD23 /* DetailViewController+Ally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+Ally.swift"; sourceTree = "<group>"; };
+		FECA58932BB2FF5A00F8AD23 /* DetailTableCell+Ally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailTableCell+Ally.swift"; sourceTree = "<group>"; };
 		FEE7E7052BAF864F00ED193B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		FEE7E7072BAF968800ED193B /* DetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableCell.swift; sourceTree = "<group>"; };
 		FEE7E70A2BB056D300ED193B /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 		FE277C512BADADAE007246A9 /* Master */ = {
 			isa = PBXGroup;
 			children = (
+				FECA58892BB2F90500F8AD23 /* Accessibility */,
 				FE277C4E2BACCA4F007246A9 /* MasterViewModel.swift */,
 				FE277C0D2BAC705B007246A9 /* MasterViewController.swift */,
 				FE277C522BADAEAC007246A9 /* MasterTableCell.swift */,
@@ -258,6 +267,24 @@
 				FE7424792BB1B1E000D94CBB /* EmptyView.swift */,
 			);
 			name = EmptyView;
+			sourceTree = "<group>";
+		};
+		FECA58892BB2F90500F8AD23 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				FECA588A2BB2F93D00F8AD23 /* MasterViewController+Ally.swift */,
+				FECA588E2BB2FB8C00F8AD23 /* MasterTableCell+Ally.swift */,
+			);
+			name = Accessibility;
+			sourceTree = "<group>";
+		};
+		FECA58902BB2FDB100F8AD23 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				FECA58912BB2FDE600F8AD23 /* DetailViewController+Ally.swift */,
+				FECA58932BB2FF5A00F8AD23 /* DetailTableCell+Ally.swift */,
+			);
+			name = Accessibility;
 			sourceTree = "<group>";
 		};
 		FEE7E7092BB0568200ED193B /* shared */ = {
@@ -283,6 +310,7 @@
 		FEE8A0642BAE08A10088FA6A /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				FECA58902BB2FDB100F8AD23 /* Accessibility */,
 				FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */,
 				FEE7E7052BAF864F00ED193B /* DetailViewModel.swift */,
 				FEE7E7072BAF968800ED193B /* DetailTableCell.swift */,
@@ -428,6 +456,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FECA588B2BB2F93D00F8AD23 /* MasterViewController+Ally.swift in Sources */,
+				FECA58922BB2FDE600F8AD23 /* DetailViewController+Ally.swift in Sources */,
 				FE74247C2BB1BC5600D94CBB /* DatabaseController.swift in Sources */,
 				FEE8A0662BAE08BF0088FA6A /* DetailViewController.swift in Sources */,
 				FE277C482BAC9A42007246A9 /* PersonRepository.swift in Sources */,
@@ -438,6 +468,7 @@
 				FEE7E7102BB0772200ED193B /* AppCoordinator.swift in Sources */,
 				FE277C4F2BACCA4F007246A9 /* MasterViewModel.swift in Sources */,
 				FE277C142BAC705B007246A9 /* Test_Task.xcdatamodeld in Sources */,
+				FECA58942BB2FF5A00F8AD23 /* DetailTableCell+Ally.swift in Sources */,
 				FE277C0E2BAC705B007246A9 /* MasterViewController.swift in Sources */,
 				FEE7E7122BB0836400ED193B /* Storyboarded.swift in Sources */,
 				FE277C452BAC79FD007246A9 /* PersonModel.swift in Sources */,
@@ -446,6 +477,7 @@
 				FEE7E7062BAF865000ED193B /* DetailViewModel.swift in Sources */,
 				FE618DEC2BB1F6EC00A81435 /* PersonLocalDataSource.swift in Sources */,
 				FE277C532BADAEAC007246A9 /* MasterTableCell.swift in Sources */,
+				FECA588F2BB2FB8C00F8AD23 /* MasterTableCell+Ally.swift in Sources */,
 				FE277C4C2BACBC93007246A9 /* PersonRemoteDataSource.swift in Sources */,
 				FE277C0A2BAC705B007246A9 /* AppDelegate.swift in Sources */,
 				FE277C0C2BAC705B007246A9 /* SceneDelegate.swift in Sources */,
