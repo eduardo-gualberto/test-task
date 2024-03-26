@@ -46,7 +46,7 @@ extension DetailViewController: UITableViewDataSource {
         let item = section.items[indexPath.row]
         
         cell.selectionStyle = .none
-        cell.keyLabel.text = item.keys.first
+        cell.setDetailKey(item.keys.first!)
         cell.valueLabel.text = item.values.first
         
         setLabelColorFor(cell)

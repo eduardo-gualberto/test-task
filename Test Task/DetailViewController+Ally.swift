@@ -10,6 +10,7 @@ import Foundation
 extension DetailViewController {
     func setupAlly() {
         nameLabel.isAccessibilityElement = true
+        self.accessibilityViewIsModal = true
         if let name = nameLabel.text {
             nameLabel.accessibilityLabel = "Details of \(name)"
         }
