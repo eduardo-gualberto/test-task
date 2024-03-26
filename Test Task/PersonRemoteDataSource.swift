@@ -53,9 +53,13 @@ struct PersonRemoteDataSource {
     }
     
     private func saveLocally(persons: [PersonModel]) {
-        for person in persons {
-            let _ = person.toEntity()
+        // Make it so the creation of entitys and saving process happens on the same queue
+        DatabaseController.persistentContainer.viewContext.performAndWait {
+            for person in persons {
+                let _ = person.toEntity()
+            }
+            DatabaseController.saveContext()
         }
-        DatabaseController.saveContext()
+        
     }
 }
