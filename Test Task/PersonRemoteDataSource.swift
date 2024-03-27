@@ -15,41 +15,29 @@ struct RawPersonsResponse: Decodable {
 
 struct PersonRemoteDataSource {
     func fetchAll() async -> Result<[PersonModel], PersonError> {
-        var components = URLComponents(string: "https://api.pipedrive.com/v1/persons/")
-        components?.queryItems = [
-            URLQueryItem(name: "api_token", value: "52bfcd9a52ba512c2a71b4fec8fc2969e222a990")
-        ]
-        guard let components = components, let url = components.url else {
+        guard let url = Constants.personsApiURL else {
             return .failure(.unexpected(description: "Couldn't find server"))
         }
-        do {
-            let (data, response) = try await URLSession.shared.data(from: url)
-            
-            if let response = response as? HTTPURLResponse {
-                if (400 ... 599).contains(response.statusCode) {
-                    return .failure(.server(code: response.statusCode))
-                }
+        guard let (data, response) = try? await makeApiCall(with: url) else {
+            return .failure(.dataFetchingError)
+        }
+        if (400...599).contains(response.statusCode) {
+            return .failure(.server(code: response.statusCode))
+        }
+        
+        if let rawResponse = try? decode(data: data) {
+            if !rawResponse.success {
+                return .failure(.unexpected(description: "API request failed"))
             }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            
-            let decoded = try decoder.decode(RawPersonsResponse.self, from: data)
-            
+            let persons = rawResponse.data
             Task(priority: .background) {
                 // saves data loaded to the device
-                self.saveLocally(persons: decoded.data)
+                self.saveLocally(persons: persons)
             }
-            
-            return .success(decoded.data)
-            
-        } catch {
-            return .failure(.parsingError)
+            return .success(persons)
         }
+        
+        return .failure(.parsingError)
     }
     
     private func saveLocally(persons: [PersonModel]) {
@@ -61,5 +49,24 @@ struct PersonRemoteDataSource {
             DatabaseController.saveContext()
         }
         
+    }
+    
+    private func decode(data: Data) throws -> RawPersonsResponse {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
+        let decoded = try decoder.decode(RawPersonsResponse.self, from: data)
+        
+        return decoded
+    }
+    
+    private func makeApiCall(with url: URL) async throws -> (Data, HTTPURLResponse) {
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        return (data, response as! HTTPURLResponse)
     }
 }

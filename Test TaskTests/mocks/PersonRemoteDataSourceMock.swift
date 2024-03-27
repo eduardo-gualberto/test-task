@@ -20,7 +20,7 @@ import CoreData
 extension PersonError : Equatable {
     public static func == (lhs: PersonError, rhs: PersonError) -> Bool {
         switch (lhs, rhs) {
-        case (.parsingError, .parsingError), (.noDataFetched, .noDataFetched), (.localDBFail, .localDBFail):
+        case (.parsingError, .parsingError), (.dataFetchingError, .dataFetchingError), (.localDBFail, .localDBFail):
             return true
         case (.server(let lhsCode), .server(let rhsCode)):
             return lhsCode == rhsCode
@@ -40,44 +40,34 @@ extension PersonModel: Equatable {
 }
 
 struct PersonRemoteDataSourceMock {
-    func fetchAll(with url: String, token: String, save: Bool = false) async -> Result<[PersonModel], PersonError> {
-        var components = URLComponents(string: url)
-        components?.queryItems = [
-            URLQueryItem(name: "api_token", value: token)
-        ]
-        guard let components = components, let url = components.url else {
+    func fetchAll(save: Bool = false) async -> Result<[PersonModel], PersonError> {
+        guard let url = Constants.personsApiURL else {
             return .failure(.unexpected(description: "Couldn't find server"))
         }
-        do {
-            let (data, response) = try await URLSession.shared.data(from: url)
-            
-            if let response = response as? HTTPURLResponse {
-                if (400 ... 599).contains(response.statusCode) {
-                    return .failure(.server(code: response.statusCode))
-                }
+        guard let (data, response) = try? await makeApiCall(with: url) else {
+            return .failure(.dataFetchingError)
+        }
+        if (400...599).contains(response.statusCode) {
+            return .failure(.server(code: response.statusCode))
+        }
+        
+        if let rawResponse = try? decode(data: data) {
+            if !rawResponse.success {
+                return .failure(.unexpected(description: "API request failed"))
             }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            
-            let decoded = try decoder.decode(RawPersonsResponse.self, from: data)
+            let persons = rawResponse.data
             
             if save {
                 Task(priority: .background) {
                     // saves data loaded to the device
-                    self.saveLocally(persons: decoded.data)
+                    self.saveLocally(persons: persons)
                 }
             }
             
-            return .success(decoded.data)
-            
-        } catch {
-            return .failure(.parsingError)
+            return .success(persons)
         }
+        
+        return .failure(.parsingError)
     }
     
     private func saveLocally(persons: [PersonModel]) {
@@ -89,5 +79,24 @@ struct PersonRemoteDataSourceMock {
             DatabaseController.saveContext()
         }
         
+    }
+    
+    private func decode(data: Data) throws -> RawPersonsResponse {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
+        let decoded = try decoder.decode(RawPersonsResponse.self, from: data)
+        
+        return decoded
+    }
+    
+    private func makeApiCall(with url: URL) async throws -> (Data, HTTPURLResponse) {
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        return (data, response as! HTTPURLResponse)
     }
 }

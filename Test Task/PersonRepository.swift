@@ -4,7 +4,7 @@ enum PersonError: Error {
     case unexpected(description: String)
     case server(code: Int)
     case parsingError
-    case noDataFetched
+    case dataFetchingError
     case localDBFail
 }
 

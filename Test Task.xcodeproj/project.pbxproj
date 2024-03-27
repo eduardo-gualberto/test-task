@@ -42,6 +42,7 @@
 		FEE8A0662BAE08BF0088FA6A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */; };
 		FEF4343C2BB34259005C3729 /* PersonRemoteDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4343B2BB34259005C3729 /* PersonRemoteDataSourceMock.swift */; };
 		FEF4343F2BB34DBB005C3729 /* PersonLocalDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4343E2BB34DBB005C3729 /* PersonLocalDataSourceMock.swift */; };
+		FEF434412BB4B92D005C3729 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF434402BB4B92D005C3729 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		FEE8A0652BAE08BF0088FA6A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FEF4343B2BB34259005C3729 /* PersonRemoteDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRemoteDataSourceMock.swift; sourceTree = "<group>"; };
 		FEF4343E2BB34DBB005C3729 /* PersonLocalDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonLocalDataSourceMock.swift; sourceTree = "<group>"; };
+		FEF434402BB4B92D005C3729 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				FE74247B2BB1BC5600D94CBB /* DatabaseController.swift */,
+				FEF434402BB4B92D005C3729 /* Constants.swift */,
 			);
 			name = application;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				FE277C482BAC9A42007246A9 /* PersonRepository.swift in Sources */,
 				FEE7E70E2BB0769C00ED193B /* CoordinatorProtocol.swift in Sources */,
 				FEE7E7082BAF968800ED193B /* DetailTableCell.swift in Sources */,
+				FEF434412BB4B92D005C3729 /* Constants.swift in Sources */,
 				FE7424752BB1AA3700D94CBB /* UITableView+EmptyView.swift in Sources */,
 				FE74247A2BB1B1E000D94CBB /* EmptyView.swift in Sources */,
 				FEE7E7102BB0772200ED193B /* AppCoordinator.swift in Sources */,
